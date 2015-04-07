@@ -17,8 +17,17 @@ ActiveRecord::Schema.define(version: 20150407100330) do
   enable_extension "plpgsql"
 
   create_table "payments", force: true do |t|
+    t.string   "product_name"
+    t.string   "customer_name"
+    t.text     "address"
     t.string   "city"
+    t.string   "state"
+    t.string   "post_code"
     t.string   "country"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "card_number"
+    t.decimal  "amount",        precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end

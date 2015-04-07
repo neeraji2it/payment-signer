@@ -1,14 +1,22 @@
-<p id="notice"><%= notice %></p>
+ 
+<% @page_title = "Sign This" %>
 
-<p>
-  <strong>City:</strong>
-  <%= @payment.city %>
-</p>
+<div class="row">
+    <div class="container">
 
-<p>
-  <strong>Country:</strong>
-  <%= @payment.country %>
-</p>
+        <div class="col-xs-12 col-sm-2 left-pannel affix">
+            <h4>Common</h4>
+            <hr>
+            <input type="button" class="btn btn-info" value="Signature">
 
-<%= link_to 'Edit', edit_payment_path(@payment) %> |
-<%= link_to 'Back', payments_path %>
+        </div>
+        <div class="col-xs-12 col-sm-10 right-pannel">
+           <img src="/assets/croped-img.png" class="img-border" width="100%" height="100%" />
+           <img src="/assets/croped-img.png" class="img-border" width="100%" height="100%" />
+       </div>
+
+   </div>
+</div>
+
+
+<%= link_to "Payments", payments_path %>
