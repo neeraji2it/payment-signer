@@ -1,0 +1,59 @@
+@charset "utf-8"
+
+/* CSS Document */
+
+body
+  padding-top: 70px
+  background: url(bk.jpg)
+
+.left-pannel
+  margin: 3px
+  border: 1px groove #238adb
+  background: #fff
+  text-align: center
+  width: 200px
+  border-radius: 5px
+  box-shadow: 0 0 3px 3px #ccc
+
+.right-pannel
+  margin: 3px
+  margin-left: 19%
+
+.img-border
+  border: 2px solid  #ccc
+  margin-bottom: 5px
+  border-radius: 5px
+  box-shadow: 0 0 3px 3px #ccc
+
+.left-pannel input
+  margin: 20px
+
+.logo
+  background-image: url(logo.png)
+  background-repeat: no-repeat
+  background-size: 200px 50px
+
+.left-pannel hr
+  border-width: 1px 0
+  margin: 0 0
+
+@media (min-width: 768px) and (max-width: 1199px)
+  .right-pannel
+    margin-left: 21.9%
+  .left-pannel
+    width: 150px
+    text-align: center
+
+@media (min-width: 220px) and (max-width: 767px)
+  .right-pannel
+    margin-left: 0
+    margin: 0
+    padding-top: 120px
+  .left-pannel
+    width: 100%
+    text-align: center
+    z-index: 50
+    background: #fff
+    margin: 0
+  body
+    padding-top: 47px
