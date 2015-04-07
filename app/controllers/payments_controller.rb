@@ -28,11 +28,11 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
-        format.json { render :show, status: :created, location: @payment }
+        gflash success: "Payments was successfully created."
+        redirect_to root_path
       else
-        format.html { render :new }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
+        gflash :now, error: @payment.errors.full_messages.join("<br/>").html_safe
+        render :new
       end
     end
   end
@@ -55,10 +55,9 @@ class PaymentsController < ApplicationController
   # DELETE /payments/1.json
   def destroy
     @payment.destroy
-    respond_to do |format|
-      format.html { redirect_to payments_url, notice: 'Payment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
+    gflash success: 'Payment was successfully destroyed.'
+    redirect_to root_path
   end
 
   private
