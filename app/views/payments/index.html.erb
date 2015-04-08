@@ -14,12 +14,13 @@
 
 		<!-- panel body -->
 		<div class="panel-body">
-			<table class="table table-condensed table-striped">
+			<table class="table table-condensed">
 				<thead>
 					<tr>
+						<th></th>
+						<th> CustomerName </th>
 						<th> amount </th>
 						<th> ProductName </th>
-						<th> CustomerName </th>
 						<th> Address</th>
 						<th> City </th>
 						<th> State </th>
@@ -27,22 +28,30 @@
 						<th> Phone</th>
 						<th> Email</th>
 						<th> CardNumber </th>
+						<th colspan="20"></th>
 					</tr>
 				</thead>
-				<% @payments.each do |p| %>
-				<tr>
-					<td><%= link_to  p.amount, payment_path(p)%></td>
-					<td><%= p.product_name%></td>
-					<td><%= p.customer_name%></td>
-					<td><%= p.address%></td>
-					<td><%= p.city%></td>
-					<td><%= p.state%></td>
-					<td><%= p.country%></td>
-					<td><%= p.phone%></td>
-					<td><%= p.email%> </td>
-					<td><%= p.card_number%> </td>
-				</tr>
-				<%end%>
+
+				<tbody>
+					<% @payments.each do |payment| %>
+						<tr>
+							<td>
+								<span class="glyphicon glyphicon-<%= payment.is_signed ? 'ok text-success' : 'remove text-danger' %>"></span>
+							</td>
+							<td><%= link_to payment.customer_name, payment_path(payment) %></td>
+							<td><%= payment.amount%></td>
+							<td><%= payment.product_name%></td>
+							<td><%= payment.address%></td>
+							<td><%= payment.city%></td>
+							<td><%= payment.state%></td>
+							<td><%= payment.country%></td>
+							<td><%= payment.phone%></td>
+							<td><%= payment.email%> </td>
+							<td><%= payment.card_number%> </td>
+							<td><%= link_to "<i class='glyphicon glyphicon-trash'".html_safe, payment_path(payment), method: :delete, data: { confirm: 'Are you sure want to delete?' }, class: 'btn btn-xs btn-danger' %></td>
+						</tr>
+					<%end%>
+				</tbody>
 			</table>
 		</div>
 		<div class="panel-footer">

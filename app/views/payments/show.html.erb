@@ -1,22 +1,107 @@
- 
-<% @page_title = "Sign This" %>
+ <div class="row">
+  <div class="container">
+    <!-- in future if we required drag and drop functionality enable it -->
+    <!-- <div class="col-xs-12 col-sm-2 left-pannel affix">
+      <h4>Common</h4>
+      <hr>
+      <input type="button" class="btn btn-info" value="Signature">
+      <p class=""></p>
+    </div> -->
 
-<div class="row">
-    <div class="container">
-
-        <div class="col-xs-12 col-sm-2 left-pannel affix">
-            <h4>Common</h4>
-            <hr>
-            <input type="button" class="btn btn-info" value="Signature">
-
+    <div class="col-xs-12 col-sm-10 right-pannel">
+      <!-- <img src="/assets/croped-img.png" class="img-border" width="100%" height="100%" /> -->
+      <div class="panel panel-info panel-pdf">
+        <!-- panel heading -->
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Verify & Place Signature
+          </h3>
         </div>
-        <div class="col-xs-12 col-sm-10 right-pannel">
-           <img src="/assets/croped-img.png" class="img-border" width="100%" height="100%" />
-           <img src="/assets/croped-img.png" class="img-border" width="100%" height="100%" />
-       </div>
 
-   </div>
+        <!-- panel body -->
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 visible-lg" align="center"> 
+              <img alt="User Pic" src="/assets/photo.png?sz=100" class="img-circle">
+            </div>
+            <div class=" col-md-9 col-lg-9 "> 
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>Verified</td>
+                    <td>
+                      <span class="glyphicon glyphicon-<%= @payment.is_signed ? "ok text-success" : "remove text-danger" %>"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Customer Name</td>
+                    <td><%= @payment.customer_name %></td>
+                  </tr>
+                  <tr>
+                    <td>Customer Email</td>
+                    <td><%= @payment.email %></td>
+                  </tr>
+                  <tr>
+                    <td>Amount</td>
+                    <td><%= number_to_currency @payment.amount %></td>
+                  </tr>
+                  <tr>
+                    <td>Product Name</td>
+                    <td><%= @payment.product_name %></td>
+                  </tr>
+                  <tr>
+                    <td>Address</td>
+                    <td><%= @payment.address %></td>
+                  </tr>
+                    <td>City</td>
+                    <td><%= @payment.city %></td>
+                  </tr>
+                    <td>State</td>
+                    <td><%= @payment.state %></td>
+                  </tr>
+                  <tr>
+                    <td>Postal Code</td>
+                    <td><%= @payment.post_code %></td>
+                  </tr>
+                    <td>Country</td>
+                    <td><%= @payment.country %></td>
+                  </tr>
+                  </tr>
+                    <td>Phone</td>
+                    <td><%= @payment.phone %></td>
+                  </tr>
+                  </tr>
+                    <td>Card Number:</td>
+                    <td>
+                      xxxx xxxx xxxx <%= @payment.card_number %>
+                      <span class="text-info text-xs">(  Last four digits  )</span>                      
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- panel footer -->
+        <div class="panel-footer clearfix">
+          <div class="signature-wrapper">
+            <% if @payment.is_signed %>
+              <div class="signature-box">
+                
+              </div>
+              <span class="signature-date-placeholder">
+                <%= Date.today.strftime("%B %d %Y - %H:%M %p") %>
+              </span>
+            <% else %>
+              <div class="btn btn-sm btn-primary" data-toggle="modal" data-target="#signatureForm">click here to sign</div>
+            <% end %>
+          </div>
+        </div>
+
+        <%= render 'signature_form' %>
+        
+      </div>
+    </div>
+  </div>
 </div>
-
-
-<%= link_to "Payments", payments_path %>

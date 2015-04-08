@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 gem 'bootstrap-sass', '~> 3.3.4'
+gem 'compass-rails'
 gem "gritter", "1.1.0"
 gem 'simple_form'
 gem 'country_select'
@@ -19,6 +20,7 @@ gem 'wkhtmltopdf-binary'
 gem 'wkhtmltopdf-heroku'
 gem 'wicked_pdf'
 gem 'mandrill_mailer'
+gem 'signature-pad-rails'
 
 group :development do
   gem 'spring'

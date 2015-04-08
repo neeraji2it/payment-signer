@@ -2,11 +2,10 @@ class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :destroy]
 
   def index
-    @payments = Payment.all.page(params[:page])
+    payments
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @payment = Payment.new
@@ -35,6 +34,10 @@ private
 
   def set_payment
     @payment = Payment.find(params[:id])
+  end
+
+  def payments
+    @payments ||= Payment.order(created_at: :desc).page(params[:page])
   end
 
   def payment_params
