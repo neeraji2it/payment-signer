@@ -1,11 +1,14 @@
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: [:show, :destroy]
+  before_action :payment, only: [:show, :destroy]
 
   def index
     payments
   end
 
-  def show; end
+  def show
+    @signature = Sign.new(payment_id: payment.id)
+
+  end
 
   def new
     @payment = Payment.new
@@ -13,9 +16,12 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = Payment.new(payment_params)
-
+    @payment.token = 
     if @payment.save
       gflash success: "Payments was successfully created."
+
+
+
       redirect_to root_path
     else
       gflash :now, error: @payment.errors.full_messages.join("<br/>").html_safe
@@ -29,10 +35,9 @@ class PaymentsController < ApplicationController
     redirect_to root_path
   end
 
-
 private
 
-  def set_payment
+  def payment
     @payment = Payment.find(params[:id])
   end
 

@@ -86,13 +86,8 @@
         <!-- panel footer -->
         <div class="panel-footer clearfix">
           <div class="signature-wrapper">
-            <% if @payment.is_signed %>
-              <div class="signature-box">
-                
-              </div>
-              <span class="signature-date-placeholder">
-                <%= Date.today.strftime("%B %d %Y - %H:%M %p") %>
-              </span>
+            <% if @payment.is_signed && @payment.sign.present? %>
+              <%= render 'signature' %>
             <% else %>
               <div class="btn btn-sm btn-primary" data-toggle="modal" data-target="#signatureForm">click here to sign</div>
             <% end %>

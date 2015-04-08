@@ -1,0 +1,14 @@
+<div class="signature-box" id="signature-box">
+  <canvas class="pad" width="190" height="70"></canvas>
+</div>
+<span class="signature-date-placeholder">
+  <%= Date.today.strftime("%B %d %Y - %H:%M %p") %>
+</span>
+
+
+<script>
+  $(function() {
+    var data = <%= @payment.sign.signature.to_json.html_safe %>;
+    $("#signature-box").signaturePad({displayOnly: true}).regenerate(data);
+  });
+</script>

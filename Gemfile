@@ -21,6 +21,7 @@ gem 'wkhtmltopdf-heroku'
 gem 'wicked_pdf'
 gem 'mandrill_mailer'
 gem 'signature-pad-rails'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development do
   gem 'spring'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408060918) do
+ActiveRecord::Schema.define(version: 20150408122134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,17 @@ ActiveRecord::Schema.define(version: 20150408060918) do
     t.boolean  "is_signed",                             default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
+
+  create_table "signs", force: true do |t|
+    t.integer  "payment_id"
+    t.json     "signature"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "signs", ["payment_id"], name: "index_signs_on_payment_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

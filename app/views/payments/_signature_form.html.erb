@@ -6,15 +6,19 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Signature Form</h4>
       </div>
-      <div class="modal-body">
-        <%= simple_form_fo @payment, url: update_sinature_path %>
-
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Done</button>
-      </div>
+      <%= simple_form_for @signature, url: signatures_path, method: :post do |f| %>
+        <div class="modal-body">
+          <div class="borderd">
+            <canvas class="pad" width="190" height="70"></canvas>
+          </div>
+          <%= f.hidden_field :signature, class: 'output' %>
+          <%= f.hidden_field :payment_id, value: @payment.id %>
+        </div>
+        <div class="modal-footer">
+          <a href="#clear" class="clearButton btn btn-sm btn-default">Clear</a>
+          <%= f.submit 'Done', class: 'btn btn-sm btn-primary' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

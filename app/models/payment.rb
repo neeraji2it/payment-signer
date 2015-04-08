@@ -11,5 +11,5 @@ class Payment < ActiveRecord::Base
                     :on => :create
 
   # association
-  has_one :signature
+  has_one :sign
 end
