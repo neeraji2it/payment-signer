@@ -11,7 +11,8 @@ class CreatePayments < ActiveRecord::Migration
       t.string :phone
       t.string :email
       t.string :card_number
-      t.decimal :amount, precision: 8, scale: 2  
+      t.decimal :amount, precision: 8, scale: 2
+      t.boolean :is_signed, default: false
       t.timestamps
     end
   end

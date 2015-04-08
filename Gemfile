@@ -14,6 +14,9 @@ gem 'pry-rails'
 gem 'devise'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-heroku'
+gem 'wicked_pdf'
 
 group :development do
   gem 'spring'
