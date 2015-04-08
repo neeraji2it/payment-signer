@@ -17,6 +17,7 @@ gem 'bootstrap-kaminari-views'
 gem 'wkhtmltopdf-binary'
 gem 'wkhtmltopdf-heroku'
 gem 'wicked_pdf'
+gem 'mandrill_mailer'
 
 group :development do
   gem 'spring'
