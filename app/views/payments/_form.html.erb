@@ -1,30 +1,29 @@
-           <% @page_title = "Payment" %>
- 
-            <section class="main_form">
+<% @page_title = "Payment" %>
 
-              <h1 class="form_title">Enter Parameters </h1>
-              <article class="form_container">
-                <div id="form">
-                  <%= form_for @payment, :url => payments_path, :method => "POST"  do |f| %>
-                 
-                  <%= f.text_field :amount, :placeholder=>"amount",:id=>"transactionamount" %>
-                  <%= f.text_field :product_name, :placeholder => "ProductName"   %>
-                  <%= f.text_field :customer_name, :placeholder=>"Customer Name"   %>
-                  <%= f.text_field :address, :placeholder=>"Address", :id=>"customerAddress"   %>
-                  <%= f.text_field :city, :placeholder=>"City", :id=>"customerCity"   %>
-                  <%= f.text_field :state, :placeholder=>"State", :id=>"customerState"   %>
-                  <%= f.text_field :post_code, :placeholder=>"Postcode", :id=>"customerPostCode"   %>
-                  <%= f.text_field :country, :placeholder=>"Country", :id=>"customerCountry"   %>
-                  <%= f.text_field :phone, :placeholder=>"Phone", :id=>"customerPhone"   %>
-                  <%= f.email_field :email, :placeholder=>"Email", :id=>"customerEmail"   %>
-                  <%= f.text_field :card_number, :placeholder=>"CardNumber",  :id=>"customerCardNumber"%>
-                  <label style="color: green">
-                    <small id="display-tooltip">Card number is secure, mouse hover to ensure last 4 digits</small>
-                  </label>
-                  <!--button class="btn" type="submit" id="submitButton" -->
-                  <%= f.submit%>
-                  <%end%>
-                </div>
-              </article>
+<section class="main_form">
 
-            </section>
+  <h1 class="form_title">Enter Parameters </h1>
+  <article class="form_container">
+    <div id="form">
+      <%= form_for @payment, :url => payments_path, :method => "POST"  do |f| %>
+     
+      <%= f.text_field :amount, :placeholder=>"amount",:id=>"transactionamount" %>
+      <%= f.text_field :product_name, :placeholder => "ProductName"   %>
+      <%= f.text_field :customer_name, :placeholder=>"Customer Name"   %>
+      <%= f.text_field :address, :placeholder=>"Address", :id=>"customerAddress"   %>
+      <%= f.text_field :city, :placeholder=>"City", :id=>"customerCity"   %>
+      <%= f.text_field :state, :placeholder=>"State", :id=>"customerState"   %>
+      <%= f.text_field :post_code, :placeholder=>"Postcode", :id=>"customerPostCode"   %>
+      <%= f.text_field :country, :placeholder=>"Country", :id=>"customerCountry"   %>
+      <%= f.text_field :phone, :placeholder=>"Phone", :id=>"customerPhone"   %>
+      <%= f.email_field :email, :placeholder=>"Email", :id=>"customerEmail"   %>
+      <%= f.text_field :card_number, :placeholder=>"CardNumber",  :id=>"customerCardNumber"%>
+      <label style="color: green">
+        <small id="display-tooltip">Please enter only last 4 digits of the card</small>
+      </label>
+      <!--button class="btn" type="submit" id="submitButton" -->
+      <%= f.submit%>
+      <%end%>
+    </div>
+  </article>
+</section>

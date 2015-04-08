@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :set_payment, only: [:show, :destroy]
 
   def index
     @payments = Payment.all.page(params[:page])
@@ -10,9 +10,6 @@ class PaymentsController < ApplicationController
 
   def new
     @payment = Payment.new
-  end
-
-  def edit
   end
 
   def create
@@ -27,25 +24,14 @@ class PaymentsController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @payment.update(payment_params)
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @payment }
-      else
-        format.html { render :edit }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-  
   def destroy
     @payment.destroy
     gflash success: 'Payment was successfully destroyed.'
     redirect_to root_path
   end
 
-  private
+
+private
 
   def set_payment
     @payment = Payment.find(params[:id])
