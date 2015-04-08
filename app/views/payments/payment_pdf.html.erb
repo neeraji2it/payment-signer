@@ -7,13 +7,13 @@
     <title>Payment Signer</title>
 
     <!-- bootstrap -->
-    <link rel="stylesheet" type="text/css" href="<%= Rails.root %>/pdf_assets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<%= ENV['HOST'] %>/pdf_assets/bootstrap.min.css">
 
-    <script src="<%= Rails.root %>/pdf_assets/jquery.min.js"></script>
+    <script src="<%= ENV['HOST'] %>/pdf_assets/jquery.min.js"></script>
     <!-- Signature pad -->
-    <script src="<%= Rails.root %>/pdf_assets/jquery.signaturepad.js"></script>
-    <script src="<%= Rails.root %>/pdf_assets/flashcanvas.js"></script>
-    <script src="<%= Rails.root %>/pdf_assets/json2.min.js"></script>
+    <script src="<%= ENV['HOST'] %>/pdf_assets/jquery.signaturepad.js"></script>
+    <script src="<%= ENV['HOST'] %>/pdf_assets/flashcanvas.js"></script>
+    <script src="<%= ENV['HOST'] %>/pdf_assets/json2.min.js"></script>
 
     <style>
       .signature-wrapper {
@@ -112,7 +112,7 @@
             <div class="panel-heading">
               <h3 class="panel-title">
                 Verified Payment
-                "<%= Rails.root %>/pdf_assets/bootstrap.min.css"
+                "<%= ENV['HOST'] %>/pdf_assets/bootstrap.min.css"
               </h3>
             </div>
 
