@@ -38,7 +38,7 @@ class PaymentsController < ApplicationController
 private
 
   def payment
-    @payment = Payment.find(params[:id])
+    @payment = Payment.friendly.find(params[:id])
   end
 
   def payments

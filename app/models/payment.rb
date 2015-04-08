@@ -1,5 +1,7 @@
 class Payment < ActiveRecord::Base
-
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   # validation
 	validates :amount, :product_name, :customer_name, :address, :city, :state, 
             :post_code, :country, :card_number, :phone,
@@ -11,5 +13,5 @@ class Payment < ActiveRecord::Base
                     :on => :create
 
   # association
-  has_one :sign
+  has_one :sign, dependent: :destroy
 end
