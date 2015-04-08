@@ -6,25 +6,72 @@
       <h3>Enter Payment</h3>
     </div>
 
-    <div class="panel-body">
-      <%= simple_form_for @payment do |f| %>
-        <%= f.input :amount, placeholder: "amount", class: "form-control" %>
-        <%= f.input :product_name, placeholder: "ProductName", class: "form-control" %>
-        <%= f.input :customer_name, placeholder: "Customer Name", class: "form-control" %>
-        <%= f.input :address, placeholder: "Address", class: "form-control" %>
-        <%= f.input :city, placeholder: "City", class: "form-control" %>
-        <%= f.input :state, placeholder: "State", class: "form-control" %>
-        <%= f.input :post_code, placeholder: "Postcode", class: "form-control" %>
-        <%= f.input :country, placeholder: "Country", class: "form-control" %>
-        <%= f.input :phone, placeholder: "Phone", class: "form-control" %>
-        <%= f.input :email, placeholder: "Email", class: "form-control" %>
-        <%= f.input :card_number, placeholder: "CardNumber", class: "form-control" %>
-        <%= f.label "Please enter last 4 digits of the card", class: 'text-info col-sm-12' %>
+    <%= simple_form_for @payment do |f| %>
+      <div class="panel-body">
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-shopping-usd">$</span>
+          <%= f.input :amount, placeholder: "amount", class: "form-control input-lg", label: false %>
+          <span class="input-group-addon">.00</span>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-shopping-cart"></span>
+          <%= f.input :product_name, placeholder: "ProductName", class: "form-control input-lg", label: false %>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-user"></span>
+          <%= f.input :customer_name, placeholder: "Customer Name", class: "form-control input-lg", label: false %>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-home"></span>
+          <%= f.input :address, placeholder: "Address", class: "form-control input-lg", label: false %>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-road"></span>
+          <%= f.input :city, placeholder: "City", class: "form-control input-lg", label: false %>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-globe"></span>
+          <%= f.input :state, placeholder: "State", class: "form-control input-lg", label: false %>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-globe"></span>
+          <%= f.input :post_code, placeholder: "Postcode", class: "form-control input-lg", label: false %>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-flag"></span>
+          <%= f.input :country, placeholder: "Country", class: "form-control input-lg", label: false, prompt: "Select Country" %>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-phone"></span>
+          <%= f.input :phone, placeholder: "Phone", class: "form-control input-lg", label: false %>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-envelope"></span>
+          <%= f.input :email, placeholder: "Email", class: "form-control input-lg", label: false %>
+        </div><br/>
+        
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-credit-card"></span>
+          <%= f.input :card_number, placeholder: "CardNumber", class: "form-control input-lg", label: false %>
+        </div>
+        <p class="text-info">Please enter last 4 digits of the Card Number</p>
+      </div>
+
+      <div class="panel-footer">
         <%= f.submit class: 'btn btn-sm btn-primary' %>
-      <%end%>
-    </div>
+        <%= link_to 'View All Payments', payments_path, class: 'btn btn-sm btn-default' %>
+      </div>        
+    <%end%>
   </article>
 </section>
 
 
-<%= link_to 'Back', payments_path %>
