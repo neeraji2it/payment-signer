@@ -1,4 +1,30 @@
+<% @page_title = "Payment" %>
 
-<%= render 'form' %>
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3>Enter Payment</h3>
+    </div>
+
+    <div class="panel-body">
+      <%= simple_form_for @payment do |f| %>
+        <%= f.input :amount, placeholder: "amount", class: "form-control" %>
+        <%= f.input :product_name, placeholder: "ProductName", class: "form-control" %>
+        <%= f.input :customer_name, placeholder: "Customer Name", class: "form-control" %>
+        <%= f.input :address, placeholder: "Address", class: "form-control" %>
+        <%= f.input :city, placeholder: "City", class: "form-control" %>
+        <%= f.input :state, placeholder: "State", class: "form-control" %>
+        <%= f.input :post_code, placeholder: "Postcode", class: "form-control" %>
+        <%= f.input :country, placeholder: "Country", class: "form-control" %>
+        <%= f.input :phone, placeholder: "Phone", class: "form-control" %>
+        <%= f.input :email, placeholder: "Email", class: "form-control" %>
+        <%= f.input :card_number, placeholder: "CardNumber", class: "form-control" %>
+        <%= f.label "Please enter last 4 digits of the card", class: 'text-info col-sm-12' %>
+        <%= f.submit class: 'btn btn-sm btn-primary' %>
+      <%end%>
+    </div>
+  </article>
+</section>
+
 
 <%= link_to 'Back', payments_path %>

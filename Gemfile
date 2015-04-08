@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem "gritter", "1.1.0"
 gem 'simple_form'
+gem 'country_select'
 gem 'pry-rails'
 gem 'devise'
 gem 'kaminari'
