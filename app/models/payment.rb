@@ -14,4 +14,5 @@ class Payment < ActiveRecord::Base
 
   # association
   has_one :sign, dependent: :destroy
+  belongs_to :user
 end

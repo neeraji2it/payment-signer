@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :validatable
 
   # association
-  # has_many :payments
+  has_many :payments
 end

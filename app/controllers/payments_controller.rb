@@ -48,11 +48,7 @@ private
   end
 
   def payments
-    @payments ||= Payment.order(created_at: :desc).page(params[:page])
-  end
-
-  def payment_params
-    params.require(:payment).permit!
+    @payments ||= current_user.payments.order(created_at: :desc).page(params[:page])
   end
 
   def verify_token
@@ -60,5 +56,23 @@ private
       gflash error: 'Unauthorized access!!'
       redirect_to root_path
     end
+  end
+
+  def payment_params
+    params.require(:payment)
+          .permit(
+              :product_name,
+              :customer_name,
+              :address,
+              :city,
+              :state,
+              :post_code,
+              :country,
+              :phone,
+              :email,
+              :card_number,
+              :amount
+          )
+          .merge(user_id: current_user.id)
   end
 end
