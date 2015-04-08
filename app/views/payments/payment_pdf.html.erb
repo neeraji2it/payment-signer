@@ -19,88 +19,29 @@
       .signature-wrapper {
         width: 200px;
         text-align: center;
-        .signature-box {
-          width: 200px;
-          height: 80px;
-          border: 2px solid #3077ad;
-          border-bottom: 0px;
-          @include border-radius(5px);
-          padding: 5px;
-          background: white;
-        }
-        .signature-date-placeholder {
-          background: whitesmoke;
-          @include border-radius(5px);
-          color: red;
-          display: block;
-          font-size: 10px;
-          margin-left: 10px;
-          position: relative;
-          padding: 5px;
-          top: -2px;
-          width: 185px;
-          z-index: 999;
-        }
       }
-
-      .borderd {
+      .signature-box {
         width: 200px;
         height: 80px;
+        border: 2px solid #3077ad;
+        border-bottom: 0px;
+        border-radius: 5px
         padding: 5px;
-        border: 1px groove #238adb;
-        margin: auto;
-      }
-
-      @charset "utf-8";
-
-      /* CSS Document */
-
-      body {
-        padding-top: 70px;
-        background: url(bk.png) repeat;
-      }
-
-      .right-pannel {
-        margin: 3px;
-        margin-left: 10%;
         background: white;
-        border: 1px groove #238adb;
-        padding: 0px;
       }
-
-      .panel-pdf {
-        margin-bottom: 0px;
-      }
-
-      .img-border {
-        border: 2px solid #cccccc;
-        margin-bottom: 5px;
+      .signature-date-placeholder {
+        background: whitesmoke;
         border-radius: 5px;
-        box-shadow: 0 0 3px 3px #cccccc;
+        color: red;
+        display: block;
+        font-size: 10px;
+        margin-left: 10px;
+        position: relative;
+        padding: 5px;
+        top: -2px;
+        width: 185px;
+        z-index: 999;
       }
-
-      .left-pannel input {
-        margin: 20px;
-      }
-
-      .logo {
-        background-image: url(logo.png);
-        background-repeat: no-repeat;
-        background-size: 200px 50px;
-      }
-
-      .left-pannel hr {
-        border-width: 1px 0;
-        margin: 0 0;
-      }
-
-      @media (min-width: 220px) and (max-width: 767px) {
-        .right-pannel {
-          margin: 0;
-        }
-      }
-
-
     </style>
   </head>
   <body>
@@ -112,7 +53,6 @@
             <div class="panel-heading">
               <h3 class="panel-title">
                 Verified Payment
-                "<%= ENV['HOST'] %>/pdf_assets/bootstrap.min.css"
               </h3>
             </div>
 
