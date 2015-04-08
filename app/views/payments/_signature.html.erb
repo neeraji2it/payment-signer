@@ -2,7 +2,7 @@
   <canvas class="pad" width="190" height="70"></canvas>
 </div>
 <span class="signature-date-placeholder">
-  <%= Date.today.strftime("%B %d %Y - %H:%M %p") %>
+  <%= @payment.sign.created_at.utc.strftime("%B %d %Y - %H:%M %p") unless @payment.try(:sign).blank? %>
 </span>
 
 
