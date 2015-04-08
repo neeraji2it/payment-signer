@@ -9,6 +9,6 @@
 
     Please visit below url, if you want to download your payment confirmation:
     <%#= link_to payment_url(@payment, signature_token: @payment.token) %>
-    <%= payment_url(@payment, signature_token: @payment.token) %>
+    <%= payment_pdf_payment_url(@payment, signature_token: @payment.token) %>
   </p>
 </div>
