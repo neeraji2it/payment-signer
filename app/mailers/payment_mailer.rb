@@ -1,5 +1,5 @@
 class PaymentMailer < ActionMailer::Base
-  default from: "support@rising-sun.com.au"
+  default from: "Rising-Sun Support Team <support@rising-sun.com.au>"
 
   def payment_confirmation(payment)
     @payment = payment

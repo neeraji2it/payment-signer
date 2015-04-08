@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
       gflash success: "Payments was successfully created."
 
       # send email with the link to sign the payment
-      PaymentMailer.payment_confirmation(@payment)
+      PaymentMailer.payment_confirmation(@payment).deliver
       
       redirect_to root_path
     else

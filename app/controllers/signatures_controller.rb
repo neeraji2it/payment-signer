@@ -8,7 +8,7 @@ class SignaturesController < ApplicationController
       @signature.payment.update(is_signed: true, token: generated_token)
 
       # send email with the link to sign the payment
-      PaymentMailer.payment_pdf(@signature.payment)
+      PaymentMailer.payment_pdf(@signature.payment).deliver
 
       gflash success: "You have successfully confirm the payment.\n Please check your email"
       redirect_to root_path
