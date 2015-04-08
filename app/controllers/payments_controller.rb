@@ -16,12 +16,13 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = Payment.new(payment_params)
-    @payment.token = 
+    @payment.token = generated_token
     if @payment.save
       gflash success: "Payments was successfully created."
 
-
-
+      # send email with the link to sign the payment
+      PaymentMailer.payment_confirmation(@payment)
+      
       redirect_to root_path
     else
       gflash :now, error: @payment.errors.full_messages.join("<br/>").html_safe

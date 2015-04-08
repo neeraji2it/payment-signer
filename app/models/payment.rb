@@ -1,6 +1,6 @@
 class Payment < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :customer_name, use: :slugged
   
   # validation
 	validates :amount, :product_name, :customer_name, :address, :city, :state, 

@@ -1,0 +1,14 @@
+<div>
+  <p>Hi! <%= @payment.customer_name %></p>
+
+  <p>
+    Thank you for purchasing <%= @payment.product_name %> from our gateway. <br/>
+
+    Please confirm your payment by signing the payment in our site. <br/>
+
+    To Confirm and Sign your payment please click below link <br/>
+
+    <%#= link_to payment_url(@payment, signature_token: @payment.token) %>
+    payment_url(@payment, signature_token: @payment.token)
+  </p>
+</div>
