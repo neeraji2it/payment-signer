@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment Signer</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="<%= Rails.root %>/pdf_assets/bootstrap.min.css">
+
+    <script src="<%= Rails.root %>/pdf_assets/jquery.min.js"></script>
+    <!-- Signature pad -->
+    <script src="<%= Rails.root %>/pdf_assets/jquery.signaturepad.js"></script>
+    <script src="<%= Rails.root %>/pdf_assets/flashcanvas.js"></script>
+    <script src="<%= Rails.root %>/pdf_assets/json2.min.js"></script>
+
+    <style>
+      .signature-wrapper {
+        width: 200px;
+        text-align: center;
+        .signature-box {
+          width: 200px;
+          height: 80px;
+          border: 2px solid #3077ad;
+          border-bottom: 0px;
+          @include border-radius(5px);
+          padding: 5px;
+          background: white;
+        }
+        .signature-date-placeholder {
+          background: whitesmoke;
+          @include border-radius(5px);
+          color: red;
+          display: block;
+          font-size: 10px;
+          margin-left: 10px;
+          position: relative;
+          padding: 5px;
+          top: -2px;
+          width: 185px;
+          z-index: 999;
+        }
+      }
+
+      .borderd {
+        width: 200px;
+        height: 80px;
+        padding: 5px;
+        border: 1px groove #238adb;
+        margin: auto;
+      }
+
+      @charset "utf-8";
+
+      /* CSS Document */
+
+      body {
+        padding-top: 70px;
+        background: url(bk.png) repeat;
+      }
+
+      .right-pannel {
+        margin: 3px;
+        margin-left: 10%;
+        background: white;
+        border: 1px groove #238adb;
+        padding: 0px;
+      }
+
+      .panel-pdf {
+        margin-bottom: 0px;
+      }
+
+      .img-border {
+        border: 2px solid #cccccc;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        box-shadow: 0 0 3px 3px #cccccc;
+      }
+
+      .left-pannel input {
+        margin: 20px;
+      }
+
+      .logo {
+        background-image: url(logo.png);
+        background-repeat: no-repeat;
+        background-size: 200px 50px;
+      }
+
+      .left-pannel hr {
+        border-width: 1px 0;
+        margin: 0 0;
+      }
+
+      @media (min-width: 220px) and (max-width: 767px) {
+        .right-pannel {
+          margin: 0;
+        }
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="container">
+        <!-- in future if we required drag and drop functionality enable it -->
+        <!-- <div class="col-xs-12 col-sm-2 left-pannel affix">
+          <h4>Common</h4>
+          <hr>
+          <input type="button" class="btn btn-info" value="Signature">
+          <p class=""></p>
+        </div> -->
+
+        <div class="col-xs-12 col-sm-10 right-pannel">
+          <!-- <img src="/assets/croped-img.png" class="img-border" width="100%" height="100%" /> -->
+          <div class="panel panel-info panel-pdf">
+            <!-- panel heading -->
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                Verified Payment
+              </h3>
+            </div>
+
+            <!-- panel body -->
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 visible-lg" align="center"> 
+                  <img alt="User Pic" src="/assets/photo.png?sz=100" class="img-circle">
+                </div>
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Customer Name</td>
+                        <td><%= @payment.customer_name %></td>
+                      </tr>
+                      <tr>
+                        <td>Customer Email</td>
+                        <td><%= @payment.email %></td>
+                      </tr>
+                      <tr>
+                        <td>Amount</td>
+                        <td><%= number_to_currency @payment.amount %></td>
+                      </tr>
+                      <tr>
+                        <td>Product Name</td>
+                        <td><%= @payment.product_name %></td>
+                      </tr>
+                      <tr>
+                        <td>Address</td>
+                        <td><%= @payment.address %></td>
+                      </tr>
+                        <td>City</td>
+                        <td><%= @payment.city %></td>
+                      </tr>
+                        <td>State</td>
+                        <td><%= @payment.state %></td>
+                      </tr>
+                      <tr>
+                        <td>Postal Code</td>
+                        <td><%= @payment.post_code %></td>
+                      </tr>
+                        <td>Country</td>
+                        <td><%= @payment.country %></td>
+                      </tr>
+                      </tr>
+                        <td>Phone</td>
+                        <td><%= @payment.phone %></td>
+                      </tr>
+                      </tr>
+                        <td>Card Number:</td>
+                        <td>
+                          xxxx xxxx xxxx <%= @payment.card_number %>                      
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- panel footer -->
+            <div class="panel-footer clearfix">
+              <div class="signature-wrapper">
+                  <div class="signature-box" id="signature-box">
+                    <canvas class="pad" width="190" height="70"></canvas>
+                  </div>
+                  <span class="signature-date-placeholder">
+                    <%= Date.today.strftime("%B %d %Y - %H:%M %p") %>
+                  </span>
+
+
+                  <script>
+                    $(function() {
+                      var data = <%= @payment.sign.signature.to_json.html_safe %>;
+                      $("#signature-box").signaturePad({displayOnly: true}).regenerate(data);
+                    });
+                  </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

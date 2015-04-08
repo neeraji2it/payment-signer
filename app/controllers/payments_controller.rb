@@ -1,5 +1,7 @@
 class PaymentsController < ApplicationController
-  before_action :payment, only: [:show, :destroy]
+  before_action :payment, only: [:payment_pdf, :show, :destroy]
+  skip_before_filter :authenticate_user!, only: [:show, :payment_pdf]
+  before_action :verify_token, only: [:show, :payment_pdf]
 
   def index
     payments
@@ -7,7 +9,6 @@ class PaymentsController < ApplicationController
 
   def show
     @signature = Sign.new(payment_id: payment.id)
-
   end
 
   def new
@@ -36,6 +37,10 @@ class PaymentsController < ApplicationController
     redirect_to root_path
   end
 
+  def payment_pdf
+    render pdf: "#{@payment.product_name}"
+  end
+
 private
 
   def payment
@@ -50,4 +55,10 @@ private
     params.require(:payment).permit!
   end
 
+  def verify_token
+    unless payment.token == params[:signature_token]
+      gflash error: 'Unauthorized access!!'
+      redirect_to root_path
+    end
+  end
 end

@@ -1,0 +1,14 @@
+<div>
+  <p>Hi! <%= @payment.customer_name %></p>
+
+  <p>
+    ThankYou for confirming your payment for the product <%= @payment.product_name %> <br/>
+    from rising-sun.com.au
+
+    You can download the payment detail with your confirmation in pdf format. <br/>
+
+    Please visit below url, if you want to download your payment confirmation:
+    <%#= link_to payment_url(@payment, signature_token: @payment.token) %>
+    <%= payment_url(@payment, signature_token: @payment.token) %>
+  </p>
+</div>
