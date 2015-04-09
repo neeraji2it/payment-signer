@@ -1,7 +1,8 @@
 class PaymentsController < ApplicationController
-  before_action :payment, only: [:payment_pdf, :show, :destroy]
-  skip_before_filter :authenticate_user!, only: [:show, :payment_pdf]
+  before_action :payment, only: [:payment_pdf, :show, :destroy, :thankyou]
   before_action :verify_token, only: [:show, :payment_pdf]
+
+  skip_before_filter :authenticate_user!, only: [:show, :payment_pdf, :thankyou]
 
   def index
     payments
@@ -40,6 +41,8 @@ class PaymentsController < ApplicationController
   def payment_pdf
     render pdf: "#{@payment.product_name}"
   end
+
+  def thankyou; end
 
 private
 

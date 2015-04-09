@@ -8,6 +8,6 @@ class PaymentMailer < ActionMailer::Base
 
   def payment_pdf(payment)
     @payment = payment
-    mail(to: @payment.email, subject: 'You Payment was confirmed and signed')
+    mail(to: @payment.email, subject: 'Thankyou, You Payment was confirmed and signed')
   end
 end

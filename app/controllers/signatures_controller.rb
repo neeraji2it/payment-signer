@@ -11,7 +11,7 @@ class SignaturesController < ApplicationController
       PaymentMailer.payment_pdf(@signature.payment).deliver
 
       gflash success: "You have successfully confirm the payment.\n Please check your email"
-      redirect_to root_path
+      redirect_to thankyou_payment_path(@signature.payment)
     else
       gflash error: @signature.errors.full_messages.join("<br />").html_safe
       redirect_to :back
