@@ -22,6 +22,7 @@ gem 'wicked_pdf'
 gem 'mandrill_mailer'
 gem 'signature-pad-rails'
 gem 'friendly_id', '~> 5.1.0'
+gem 'activeadmin', github: 'activeadmin'
 
 group :development do
   gem 'spring'
