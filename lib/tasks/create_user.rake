@@ -8,5 +8,10 @@ namespace :db do
 
       p "created user successfully!"
     end
+
+    desc "seed admin information"
+    task :admin => :environment do
+      AdminUser.find_or_create_by(email: ENV["ADMIN_EMAIL"], password: ENV["ADMIN_PASSWORD"], password_confirmation: ENV["ADMIN_PASSWORD"])
+    end
   end
 end

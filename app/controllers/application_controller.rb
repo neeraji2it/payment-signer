@@ -6,6 +6,18 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
 
+protected
+  
+  ActiveAdmin::ResourceController.class_eval do
+    def find_resource
+      if resource_class.is_a?(FriendlyId)
+        scoped_collection.where(slug: params[:id]).first!
+      else
+        scoped_collection.where(id: params[:id]).first!
+      end
+    end
+  end
+
 private
 
   def generated_token
