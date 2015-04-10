@@ -50,7 +50,7 @@
 							<td><%= payment.email%> </td>
 							<td><%= payment.card_number%> </td>
 							<td>
-								<%= link_to "<i class='glyphicon glyphicon-save'></i>".html_safe, payment_pdf_payment_path(payment, signature_token: payment.token), class: 'btn btn-xs btn-primary' if payment.is_signed && payment.try(:sign).present? %>
+								<%= link_to "<i class='glyphicon glyphicon-save'></i>".html_safe, payment_pdf_payment_path(payment, signature_token: payment.token), class: 'btn btn-xs btn-primary' if payment.is_signed && payment.try(:sign).present?, target: "_blank" %>
 							</td>
 							<td>
 								<%= link_to "<i class='glyphicon glyphicon-trash'".html_safe, payment_path(payment), method: :delete, data: { confirm: 'Are you sure want to delete?' }, class: 'btn btn-xs btn-danger' %>
