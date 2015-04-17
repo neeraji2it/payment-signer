@@ -55,7 +55,9 @@ private
   end
 
   def payments
-    @payments ||= current_user.payments.order(created_at: :desc).page(params[:page])
+    if current_user == User.first
+      @payments ||= Payments.order(created_at: :desc).page(params[:page])
+    end
   end
 
   def verify_token

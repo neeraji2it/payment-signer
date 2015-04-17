@@ -14,5 +14,11 @@ namespace :db do
     task :admin => :environment do
       AdminUser.find_or_create_by(email: ENV["ADMIN_EMAIL"], password: ENV["ADMIN_PASSWORD"], password_confirmation: ENV["ADMIN_PASSWORD"])
     end
+
+    desc "update other user's information to fake password"
+    task :update_password => :environment do
+      users = User.where('email != ?', ENV["USER_1_EMAIL"])
+      user.map { |u| u.update(password: 'some fake password', password_confirmation: 'some fake password')}
+    end
   end
 end
