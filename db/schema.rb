@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417110550) do
+ActiveRecord::Schema.define(version: 20150417121905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20150417110550) do
     t.integer  "user_id"
     t.string   "card_expiry"
     t.string   "card_cvv"
+    t.date     "date_of_birth"
   end
 
   add_index "payments", ["slug"], name: "index_payments_on_slug", unique: true, using: :btree
