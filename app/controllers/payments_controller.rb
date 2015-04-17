@@ -55,7 +55,7 @@ private
   end
 
   def payments
-    if current_user == User.first
+    if current_user == User.last
       @payments ||= Payment.order(created_at: :desc).page(params[:page])
     else
       @payments = []
