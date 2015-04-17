@@ -3,7 +3,11 @@
 //= require bootstrap-sprockets
 //= require gritter
 //= require signature-pad
+//= require bootstrap-datepicker
 
+
+$ ->
+  $('.datepicker').datepicker()
 
 $ ->
   signatureOptions = 

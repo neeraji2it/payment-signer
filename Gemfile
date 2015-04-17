@@ -23,6 +23,7 @@ gem 'mandrill_mailer'
 gem 'signature-pad-rails'
 gem 'friendly_id', '~> 5.1.0'
 gem 'activeadmin', github: 'activeadmin'
+gem 'bootstrap-datepicker-rails'
 
 group :development do
   gem 'spring'

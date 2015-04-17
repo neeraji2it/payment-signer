@@ -26,7 +26,7 @@
 
         <div class="input-group">
           <span class="input-group-addon glyphicon glyphicon-calendar"></span>
-          <%= f.input :date_of_birth, placeholder: "Date of Birth", class: "form-control input-lg", label: false %>
+          <%= f.input :date_of_birth, as: :string, input_html: { class: "datepicker" }, placeholder: "Date of Birth", class: "form-control input-lg", label: false %>
         </div><br/>
         
         <div class="input-group">
