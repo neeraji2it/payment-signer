@@ -1,8 +1,8 @@
 class PaymentsController < ApplicationController
-  before_action :payment, only: [:payment_pdf, :show, :destroy, :thankyou]
+  before_action :payment, only: [:payment_pdf, :show, :destroy, :next_step, :thankyou]
   before_action :verify_token, only: [:show, :payment_pdf]
 
-  skip_before_filter :authenticate_user!, only: [:show, :payment_pdf, :thankyou]
+  skip_before_filter :authenticate_user!, only: [:new, :create, :show, :payment_pdf, :next_step, :thankyou]
 
   def index
     payments
@@ -25,7 +25,7 @@ class PaymentsController < ApplicationController
       # send email with the link to sign the payment
       PaymentMailer.payment_confirmation(@payment).deliver
       
-      redirect_to root_path
+      redirect_to next_step_payment_path(@payment)
     else
       gflash :now, error: @payment.errors.full_messages.join("<br/>").html_safe
       render :new
@@ -41,6 +41,8 @@ class PaymentsController < ApplicationController
   def payment_pdf
     render pdf: "#{@payment.product_name}"
   end
+
+  def next_step; end
 
   def thankyou; end
 

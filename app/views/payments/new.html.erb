@@ -3,7 +3,7 @@
 <div class="col-md-6 col-md-offset-3">
   <div class="panel panel-info">
     <div class="panel-heading">
-      <h4>Enter Payment</h4>
+      <h4>Enter Payment Information</h4>
     </div>
 
     <%= simple_form_for @payment do |f| %>
@@ -61,12 +61,22 @@
         
         <div class="input-group">
           <span class="input-group-addon glyphicon glyphicon-credit-card"></span>
-          <%= f.input :card_number, placeholder: "CardNumber", class: "form-control input-lg", label: false, input_html: { maxlength: 4 } %>
-        </div>
+          <%= f.input :card_number, placeholder: "CardNumber", class: "form-control input-lg", label: false %>
+        </div><br/>
+
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-credit-card"></span>
+          <%= f.input :card_expiry, placeholder: "CardExpiry", class: "form-control input-lg", label: false %>
+        </div><br/>
+
+        <div class="input-group">
+          <span class="input-group-addon glyphicon glyphicon-credit-card"></span>
+          <%= f.input :card_cvv, placeholder: "CardCvv", class: "form-control input-lg", label: false %>
+        </div><br/>
       </div>
 
       <div class="panel-footer">
-        <%= f.submit class: 'btn btn-sm btn-primary' %>
+        <%= f.submit "Submit", class: 'btn btn-sm btn-primary' %>
         <%= link_to 'View All Payments', payments_path, class: 'btn btn-sm btn-default pull-right' %>
       </div>        
     <%end%>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :payments do
     member do
       get :payment_pdf
+      get :next_step
       get :thankyou
     end
   end

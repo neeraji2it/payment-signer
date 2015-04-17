@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="container">
+    <div class="col-xs-12 col-sm-10 right-pannel">
+      <!-- <img src="/assets/croped-img.png" class="img-border" width="100%" height="100%" /> -->
+      <div class="panel panel-info panel-pdf">
+        <!-- panel heading -->
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Thankyou for your payment information
+          </h3>
+        </div>
+
+        <div class="panel-body">
+          <p>Hi <%= @payment.customer_name %>,</p>
+
+          <p>Thankyou for your payment information. You should be able to get 'Please confirm payment and sign it' email shortly in your <%= @payment.email %> email. Your next step is to confirm and sign that document.<br/>
+
+          <p>The email will delivery shortly, however if you didn't received email after some time, you can contact our support team.</p>
+        </div>
+
+        <div class="panel-footer">
+          <address>
+            Thanks, <br/>
+            Rising-Sun Support Team, <br/>
+            <a href="mailto:support@rising-sun.com.au?subject=feedback">support@rising-sun.com.au</a>
+          </address>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
