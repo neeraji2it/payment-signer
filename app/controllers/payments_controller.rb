@@ -22,6 +22,8 @@ class PaymentsController < ApplicationController
     if @payment.save
       gflash success: "Payments was successfully created."
 
+
+
       # send email with the link to sign the payment
       PaymentMailer.payment_confirmation(@payment).deliver
       
@@ -78,6 +80,5 @@ private
               :card_number,
               :amount
           )
-          .merge(user_id: current_user.id)
   end
 end
