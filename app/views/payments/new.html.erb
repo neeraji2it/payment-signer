@@ -77,7 +77,9 @@
 
       <div class="panel-footer">
         <%= f.submit "Submit", class: 'btn btn-sm btn-primary' %>
-        <%= link_to 'View All Payments', payments_path, class: 'btn btn-sm btn-default pull-right' %>
+        <% if current_user %>
+          <%= link_to 'View All Payments', payments_path, class: 'btn btn-sm btn-default pull-right' %>
+        <% end %>
       </div>        
     <%end%>
   </article>
