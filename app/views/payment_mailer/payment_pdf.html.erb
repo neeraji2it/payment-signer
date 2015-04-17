@@ -112,7 +112,7 @@
 
             <p>Please visit below url, if you want to download your payment confirmation:</p>
 
-            <p><%= payment_url(@payment, signature_token: @payment.token) %></p>
+            <p><%= payment_pdf_payment_url(@payment, signature_token: @payment.token) %></p>
           </p>
         </div>
 
