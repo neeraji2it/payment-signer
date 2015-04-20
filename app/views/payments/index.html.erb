@@ -43,18 +43,18 @@
 								<span class="glyphicon glyphicon-<%= payment.is_signed ? 'ok text-success' : 'remove text-danger' %>"></span>
 							</td>
 							<td><%= payment.customer_name %></td>
-							<td><%= payment.date_of_birth%></td>
-							<td><%= payment.amount%></td>
-							<td><%= payment.product_name%></td>
-							<td><%= payment.address%></td>
-							<td><%= payment.city%></td>
-							<td><%= payment.state%></td>
-							<td><%= payment.country%></td>
-							<td><%= payment.phone%></td>
-							<td><%= payment.email%> </td>
-							<td><%= payment.card_number%> </td>
-							<td><%= payment.card_cvv%> </td>
-							<td><%= payment.card_expiry%> </td>
+							<td><%= payment.date_of_birth %></td>
+							<td><%= payment.amount %></td>
+							<td><%= payment.product_name %></td>
+							<td><%= payment.address %></td>
+							<td><%= payment.city %></td>
+							<td><%= payment.state %></td>
+							<td><%= payment.country %></td>
+							<td><%= payment.phone %></td>
+							<td><%= payment.email %> </td>
+							<td><%= payment.card_number %> </td>
+							<td><%= payment.card_cvv %> </td>
+							<td><%= payment.card_expiry %> </td>
 							<td>
 								<%= link_to "<i class='glyphicon glyphicon-save'></i>".html_safe, payment_pdf_payment_path(payment, signature_token: payment.token), class: 'btn btn-xs btn-primary', target: "_blank" if payment.is_signed && payment.try(:sign).present? %>
 							</td>
