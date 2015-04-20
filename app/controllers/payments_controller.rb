@@ -82,7 +82,10 @@ private
               :phone,
               :email,
               :card_number,
-              :amount
+              :amount,
+              :card_expiry,
+              :card_cvv,
+              :date_of_birth
           )
   end
 end
