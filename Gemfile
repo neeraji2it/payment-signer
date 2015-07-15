@@ -33,7 +33,7 @@ group :development do
 end
 
 gem 'dotenv-rails'
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 
 
 gem 'capistrano', '~> 3.4.0'
