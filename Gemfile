@@ -37,5 +37,5 @@ gem 'rails_12factor', group: :production
 
 
 gem 'capistrano', '~> 3.4.0'
-gem 'capistrano-rvm'
 gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-rvm'
