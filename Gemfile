@@ -17,7 +17,6 @@ gem 'devise'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'wkhtmltopdf-binary'
-gem 'wkhtmltopdf-heroku'
 gem 'wicked_pdf'
 gem 'mandrill_mailer'
 gem 'signature-pad-rails'
@@ -34,3 +33,7 @@ group :development do
 end
 
 gem 'rails_12factor', group: :production
+
+gem 'capistrano', '~> 3.4.0'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-rvm'
