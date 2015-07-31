@@ -24,6 +24,7 @@
         <!-- right elements -->
           <div class="collapse navbar-collapse" id="registration-navbar">
             <ul class="nav navbar-nav navbar-right">
+            <li class="btn-sm"><%= link_to "Contract Form", new_payment_path %></li>
               <li class="btn-sm">
                 <% if current_user %>
                   <%= link_to "Hello Admin, Logout?", destroy_user_session_path, method: :delete %>
