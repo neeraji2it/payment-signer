@@ -1,11 +1,10 @@
 ActionMailer::Base.smtp_settings = {
-    address:              "smtp.gmail.com",
+    address:              "smtp.mandrillapp.com",
     port:                 587,
     enable_starttls_auto: true,
-    user_name:            'service.bluearchstore@gmail.com',
-    password:             'Brother!@#$5',
-    authentication:       'plain',
-    enable_starttls_auto: true
-  }
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.default charset: 'utf-8'
+    user_name:            'neeraji2it@gmail.com',
+    password:             'aKHy0cc8VGSpfxPKCJsD3A',
+    authentication: "login"
+   }
+ ActionMailer::Base.delivery_method = :smtp
+ ActionMailer::Base.default charset: 'utf-8'
