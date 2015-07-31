@@ -4,6 +4,7 @@ class PaymentsController < ApplicationController
 
   before_filter :authenticate_user!, only: [:index]
 
+
   def index
     payments
   end
@@ -26,7 +27,6 @@ class PaymentsController < ApplicationController
 
       # send email with the link to sign the payment
       PaymentMailer.payment_confirmation(@payment).deliver
-
       redirect_to next_step_payment_path(@payment)
     else
       gflash :now, error: @payment.errors.full_messages.join("<br/>").html_safe
