@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Payment Confirmation Email</title>
+
+    <style type="text/css">
+      html {
+        font-family: sans-serif;
+        -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+      }
+      .container {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .row {
+        margin-right: -15px;
+        margin-left: -15px;
+      }
+      .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+      }
+      .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+        float: left;
+      }
+      .col-xs-12 {
+        width: 90%;
+      }
+      .col-xs-10 {
+        width: 83.33333333%;
+      }
+      .panel {
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid transparent;
+      }
+      .panel-body {
+        padding: 15px;
+      }
+      .panel-heading {
+        padding: 10px 15px;
+        border-bottom: 1px solid transparent;
+      }
+      .panel-heading > .dropdown .dropdown-toggle {
+        color: inherit;
+      }
+      .panel-title {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 16px;
+        color: inherit;
+      }
+      .panel-title > a,
+      .panel-title > small,
+      .panel-title > .small,
+      .panel-title > small > a,
+      .panel-title > .small > a {
+        color: inherit;
+      }
+      .panel-footer {
+        padding: 10px 15px;
+        background-color: #f5f5f5;
+        border-top: 1px solid #ddd;
+      }
+      .panel > .table,
+      .panel > .table-responsive > .table,
+      .panel > .panel-collapse > .table {
+        margin-bottom: 0;
+      }
+      .panel-info {
+        border-color: #bce8f1;
+      }
+      .panel-info > .panel-heading {
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #bce8f1;
+      }
+      .panel-info > .panel-heading + .panel-collapse > .panel-body {
+        border-top-color: #bce8f1;
+      }
+      .panel-info > .panel-heading .badge {
+        color: #d9edf7;
+        background-color: #31708f;
+      }
+      .panel-info > .panel-footer + .panel-collapse > .panel-body {
+        border-bottom-color: #bce8f1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          Thank you for confirming your payment
+        </div>
+
+        <div class="panel-body">
+          <p>Hi!  <%= @payment.customer_name %></p>
+
+          <p>
+            ThankYou for confirming your payment for the product <%= @payment.product_name %> from rom rising-sun.com.au. You can <strong>download</strong> the payment detail with your confirmation in pdf format.
+
+            <p>Please visit below url, if you want to download your payment confirmation:</p>
+
+            <p><%= payment_pdf_payment_url(@payment, signature_token: @payment.token) %></p>
+          </p>
+        </div>
+
+        <div class="panel-footer">
+          <address>
+            Thanks, <br/>
+            Rising-Sun Support Team <br/>
+            <a href="mailto:support@rising-sun.com.au?subject=feedback">support@rising-sun.com.au</a>
+          </address>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

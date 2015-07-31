@@ -1,0 +1,74 @@
+<% @page_title = "Payments" %>
+<div class="container">
+	<div class="panel panel-info">
+		<!-- panel heading -->
+		<div class="panel-heading clearfix">
+			<h4 class="panel-title pull-left" style="padding-top: 7.5px;">
+        <strong><%= pluralize Payment.count, "Payment" %></strong>
+      </h4>
+
+      <div class="btn-group pull-right">
+        <%= link_to "<i class='glyphicon glyphicon-plus'></i> New Payment".html_safe, new_payment_path,  class: 'btn btn-sm btn-primary pull-right' %>
+      </div>     
+		</div>
+
+		<!-- panel body -->
+		<div class="panel-body">
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th></th>
+						<th> CustomerName </th>
+						<th> DOB </th>
+						<th> amount </th>
+						<th> ProductName </th>
+						<th> Address</th>
+						<th> City </th>
+						<th> State </th>
+						<th> Country </th>
+						<th> Phone</th>
+						<th> Email</th>
+						<th> CardNumber </th>
+						<th> CVV </th>
+						<th> Expiry </th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @payments.each do |payment| %>
+						<tr>
+							<td>
+								<span class="glyphicon glyphicon-<%= payment.is_signed ? 'ok text-success' : 'remove text-danger' %>"></span>
+							</td>
+							<td><%= payment.customer_name %></td>
+							<td><%= payment.date_of_birth %></td>
+							<td><%= payment.amount %></td>
+							<td><%= payment.product_name %></td>
+							<td><%= payment.address %></td>
+							<td><%= payment.city %></td>
+							<td><%= payment.state %></td>
+							<td><%= payment.country %></td>
+							<td><%= payment.phone %></td>
+							<td><%= payment.email %> </td>
+							<td><%= payment.card_number %> </td>
+							<td><%= payment.card_cvv %> </td>
+							<td><%= payment.card_expiry %> </td>
+							<td>
+								<%= link_to "<i class='glyphicon glyphicon-save'></i>".html_safe, payment_pdf_payment_path(payment, signature_token: payment.token), class: 'btn btn-xs btn-primary', target: "_blank" if payment.is_signed && payment.try(:sign).present? %>
+							</td>
+							<td>
+								<%= link_to "<i class='glyphicon glyphicon-trash'".html_safe, payment_path(payment), method: :delete, data: { confirm: 'Are you sure want to delete?' }, class: 'btn btn-xs btn-danger' %>
+							</td>
+						</tr>
+					<%end%>
+				</tbody>
+			</table>
+		</div>
+		<div class="panel-footer">
+			<%= paginate @payments, theme: 'twitter-bootstrap-3' %>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,24 @@
+<!-- Modal -->
+<div class="modal fade" id="signatureForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Signature Form</h4>
+      </div>
+      <%= simple_form_for @signature, url: signatures_path, method: :post do |f| %>
+        <div class="modal-body">
+          <div class="borderd">
+            <canvas class="pad" width="190" height="70"></canvas>
+          </div>
+          <%= f.hidden_field :signature, class: 'output' %>
+          <%= f.hidden_field :payment_id, value: @payment.id %>
+        </div>
+        <div class="modal-footer">
+          <a href="#clear" class="clearButton btn btn-sm btn-default">Clear</a>
+          <%= f.submit 'Done', class: 'btn btn-sm btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
