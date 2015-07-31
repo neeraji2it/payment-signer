@@ -10,6 +10,6 @@ Rails.application.routes.draw do
       get :thankyou
     end
   end
-  resources :signatures, only: [:create]
+  resources :signatures, only: [:new, :create]
   devise_for :users
 end

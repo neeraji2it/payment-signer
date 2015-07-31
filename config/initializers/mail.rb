@@ -1,14 +1,11 @@
 ActionMailer::Base.smtp_settings = {
-    address:              "smtp.mandrillapp.com",
+    address:              "smtp.gmail.com",
     port:                 587,
     enable_starttls_auto: true,
-    user_name:            'rockingrails@gmail.com',
-    password:             'IsYfBL-kdGwKOYIK3qfyzg',
-    authentication: "login"
+    user_name:            'service.bluearchstore@gmail.com',
+    password:             'Brother!@#$5',
+    authentication:       'plain',
+    enable_starttls_auto: true
   }
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.default charset: 'utf-8'
-
-# MandrillMailer.configure do |config|
-#   config.api_key = ENV['MANDRILL_API_KEY']
-# end
