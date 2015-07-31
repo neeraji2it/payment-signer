@@ -1,5 +1,5 @@
 class SignaturesController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:create]
+  #skip_before_filter :authenticate_user!, only: [:create]
 
   def create
     @signature = Sign.new(signature_params)
@@ -21,6 +21,6 @@ class SignaturesController < ApplicationController
 private
 
   def signature_params
-    params.require(:sign).permit!
+    params.require(:sign).permit(:signature, :payment_id)
   end
 end

@@ -2,7 +2,7 @@ class PaymentsController < ApplicationController
   before_action :payment, only: [:payment_pdf, :show, :destroy, :next_step, :thankyou]
   before_action :verify_token, only: [:show, :payment_pdf]
 
-  skip_before_filter :authenticate_user!, only: [:new, :create, :show, :payment_pdf, :next_step, :thankyou]
+  before_filter :authenticate_user!, only: [:index]
 
   def index
     payments
@@ -14,14 +14,6 @@ class PaymentsController < ApplicationController
 
   def new
     @payment = Payment.new
-  end
-
-  def import
-    @payments ||= Sign.order(created_at: :desc)
-    respond_to do |format|
-      format.html
-      format.csv{send_data @payments.to_csv, :filename => "payments.csv"}
-    end
   end
 
   def create
@@ -63,9 +55,11 @@ private
   end
 
   def payments
-
+    if current_user == User.last
       @payments ||= Payment.order(created_at: :desc).page(params[:page])
-
+    else
+      @payments = []
+    end
   end
 
   def verify_token
@@ -76,6 +70,22 @@ private
   end
 
   def payment_params
-    params.require(:payment).permit!
+    params.require(:payment)
+          .permit(
+              :product_name,
+              :customer_name,
+              :address,
+              :city,
+              :state,
+              :post_code,
+              :country,
+              :phone,
+              :email,
+              :card_number,
+              :amount,
+              :card_expiry,
+              :card_cvv,
+              :date_of_birth
+          )
   end
 end
