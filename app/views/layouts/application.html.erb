@@ -37,16 +37,6 @@
       </div>
     </nav>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, class: "alert alert-#{name=="alert" ? 'danger' : name }" %>
-          <% end -%>
-        </div>
-      </div>
-    </div>
-
     <div class="row">
       <%= yield %>
     </div>

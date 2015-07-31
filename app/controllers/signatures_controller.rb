@@ -19,8 +19,8 @@ class SignaturesController < ApplicationController
   end
 
 private
-  
+
   def signature_params
-    params.require(:sign).permit(:signature, :payment_id)
+    params.require(:sign).permit!
   end
 end

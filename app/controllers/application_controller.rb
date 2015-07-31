@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
 
 protected
-  
+
   ActiveAdmin::ResourceController.class_eval do
     def find_resource
       if resource_class.is_a?(FriendlyId)

@@ -9,8 +9,9 @@
 
       <div class="btn-group pull-right">
         <%= link_to "<i class='glyphicon glyphicon-plus'></i> New Payment".html_safe, new_payment_path,  class: 'btn btn-sm btn-primary pull-right' %>
-      </div>     
+      </div>
 		</div>
+		<%= link_to "CSV", import_payments_path(:format => 'csv') %>
 
 		<!-- panel body -->
 		<div class="panel-body">

@@ -16,6 +16,14 @@ class PaymentsController < ApplicationController
     @payment = Payment.new
   end
 
+  def import
+    @payments ||= Sign.order(created_at: :desc)
+    respond_to do |format|
+      format.html
+      format.csv{send_data @payments.to_csv, :filename => "payments.csv"}
+    end
+  end
+
   def create
     @payment = Payment.new(payment_params)
     @payment.token = generated_token
@@ -26,7 +34,7 @@ class PaymentsController < ApplicationController
 
       # send email with the link to sign the payment
       PaymentMailer.payment_confirmation(@payment).deliver
-      
+
       redirect_to next_step_payment_path(@payment)
     else
       gflash :now, error: @payment.errors.full_messages.join("<br/>").html_safe
@@ -55,11 +63,9 @@ private
   end
 
   def payments
-    if current_user == User.last
+
       @payments ||= Payment.order(created_at: :desc).page(params[:page])
-    else
-      @payments = []
-    end
+
   end
 
   def verify_token
@@ -70,22 +76,6 @@ private
   end
 
   def payment_params
-    params.require(:payment)
-          .permit(
-              :product_name,
-              :customer_name,
-              :address,
-              :city,
-              :state,
-              :post_code,
-              :country,
-              :phone,
-              :email,
-              :card_number,
-              :amount,
-              :card_expiry,
-              :card_cvv,
-              :date_of_birth
-          )
+    params.require(:payment).permit!
   end
 end

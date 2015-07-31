@@ -2,7 +2,7 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
   def migrate(direction)
     super
     # Create a default user
-    AdminUser.create!(email: ENV["ADMIN_EMAIL"], password: ENV["ADMIN_PASSWORD"], password_confirmation: ENV["ADMIN_PASSWORD"]) if direction == :up
+    AdminUser.create!(email: 'admin@rising-sun.com', password: 'dine-media12345', password_confirmation: 'dine-media12345') if direction == :up
   end
 
   def change
@@ -22,8 +22,8 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
       t.integer  :sign_in_count, default: 0, null: false
       t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
-      t.inet     :current_sign_in_ip
-      t.inet     :last_sign_in_ip
+      t.string     :current_sign_in_ip
+      t.string     :last_sign_in_ip
 
       ## Confirmable
       # t.string   :confirmation_token

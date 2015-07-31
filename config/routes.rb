@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root "payments#index"
 
   resources :payments do
+    collection do
+      get :import
+    end
     member do
       get :payment_pdf
       get :next_step
