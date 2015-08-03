@@ -10,7 +10,7 @@ $ ->
   $('.datepicker').datepicker format: 'yyyy-mm-dd'
 
 $ ->
-  signatureOptions = 
+  signatureOptions =
     drawOnly: true
     lineMargin: 0
     lineTop: 140

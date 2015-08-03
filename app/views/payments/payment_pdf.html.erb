@@ -1372,16 +1372,12 @@
                       </tr>
                         <td>Card Number</td>
                         <td>
-                          <%= @payment.card_number %>
+                          ***<%= @payment.card_number[-4..-1] %>
                         </td>
                       </tr>
                       <tr>
                         <td>Card Expiry</td>
                         <td><%= @payment.card_expiry%></td>
-                      </tr>
-                      <tr>
-                        <td>Card CVV</td>
-                        <td><%= @payment.card_cvv%></td>
                       </tr>
                       <tr>
                         <td colspan="2">
