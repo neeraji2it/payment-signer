@@ -20,6 +20,7 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
     @payment.token = generated_token
+    @payment.ip_address = request.remote_ip
     if @payment.save
       gflash success: "Payments was successfully created."
 

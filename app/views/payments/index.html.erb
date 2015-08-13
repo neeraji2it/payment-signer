@@ -1,5 +1,5 @@
 <% @page_title = "Payments" %>
-<div class="container">
+<div class="container" style="width: 1290px;">
 	<div class="panel panel-info">
 		<!-- panel heading -->
 		<div class="panel-heading clearfix">
@@ -24,8 +24,8 @@
 						<th> Address</th>
 						<th> Phone</th>
 						<th> Email</th>
+						<th> IP Address </th>
 						<th> CardNumber </th>
-						<th> Expiry </th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -43,8 +43,8 @@
 							<td><%= payment.address %></td>
 							<td><%= payment.phone %></td>
 							<td><%= payment.email %> </td>
+							<td><%= payment.ip_address %></td>
 							<td>***<%= payment.card_number[-4..-1] %> </td>
-							<td><%= payment.card_expiry %> </td>
 							<td>
 								<%= link_to "<i class='glyphicon glyphicon-save'></i>".html_safe, payment_pdf_payment_path(payment, signature_token: payment.token), class: 'btn btn-xs btn-primary', target: "_blank" if payment.is_signed && payment.try(:sign).present? %>
 							</td>
