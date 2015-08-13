@@ -1380,6 +1380,10 @@
                         <td><%= @payment.card_expiry%></td>
                       </tr>
                       <tr>
+                        <td>Ip Address</td>
+                        <td><%= @payment.ip_address %></td>
+                      </tr>
+                      <tr>
                         <td colspan="2">
                           <p class="text-info">I agree to the T&C/Policies of the Company and I am satisfied with the service</p>
                         </td>
@@ -1399,7 +1403,6 @@
                   <span class="signature-date-placeholder">
                     <%= @payment.sign.created_at.utc.strftime("%B %d %Y - %H:%M %p") unless @payment.try(:sign).blank? %>
                   </span>
-
 
                   <script>
                     $(function() {
