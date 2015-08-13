@@ -35,6 +35,13 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def resend
+    @payment = Payment.friendly.find(params[:id])
+    PaymentMailer.payment_confirmation(@payment).deliver
+    gflash success: "You have successfully resend the confirmation to sign the document to '#{@payment.email}'."
+    redirect_to payments_path
+  end
+
   def destroy
     @payment.destroy
     gflash success: 'Payment was successfully destroyed.'

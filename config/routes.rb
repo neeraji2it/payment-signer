@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get :payment_pdf
       get :next_step
       get :thankyou
+      get :resend
     end
   end
   resources :signatures, only: [:new, :create]

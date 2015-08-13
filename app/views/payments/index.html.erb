@@ -44,7 +44,6 @@
 						<th> Address</th>
 						<th> Phone</th>
 						<th> Email</th>
-						<th> IP Address </th>
 						<th> CardNumber </th>
 						<th></th>
 						<th></th>
@@ -63,10 +62,13 @@
 							<td><%= payment.address %></td>
 							<td><%= payment.phone %></td>
 							<td><%= payment.email %> </td>
-							<td><%= payment.ip_address %></td>
 							<td>***<%= payment.card_number[-4..-1] %> </td>
 							<td>
-								<%= link_to "<i class='glyphicon glyphicon-save'></i>".html_safe, payment_pdf_payment_path(payment, signature_token: payment.token), class: 'btn btn-xs btn-primary', target: "_blank" if payment.is_signed && payment.try(:sign).present? %>
+							 <% if payment.is_signed && payment.try(:sign).present? %>
+								<%= link_to "<i class='glyphicon glyphicon-save'></i>".html_safe, payment_pdf_payment_path(payment, signature_token: payment.token), class: 'btn btn-xs btn-primary', target: "_blank"  %>
+								<% else %>
+								  <%= link_to "<i class='glyphicon glyphicon-send'></i>".html_safe, resend_payment_path(payment), class: 'btn btn-xs btn-danger' %>
+								<% end %>
 							</td>
 							<td>
 								<%= link_to "<i class='glyphicon glyphicon-trash'".html_safe, payment_path(payment), method: :delete, data: { confirm: 'Are you sure want to delete?' }, class: 'btn btn-xs btn-danger' %>
