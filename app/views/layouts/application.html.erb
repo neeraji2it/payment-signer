@@ -25,12 +25,9 @@
           <div class="collapse navbar-collapse" id="registration-navbar">
             <ul class="nav navbar-nav navbar-right">
             <li class="btn-sm"><%= link_to "Contract Form", new_payment_path %></li>
+                <li class="btn-sm"><%= current_user ? (link_to "Paymnets", payments_path) : (link_to "Login", new_user_session_path) %></li>
               <li class="btn-sm">
-                <% if current_user %>
-                  <%= link_to "Hello Admin, Logout?", destroy_user_session_path, method: :delete %>
-                <% else %>
-                  <%= link_to "Login", new_user_session_path %>
-                <% end %>
+                  <%= current_user ? (link_to "Hello Admin, Logout?", destroy_user_session_path, method: :delete) : '' %>
               </li>
             </ul>
           </div>

@@ -56,8 +56,12 @@ private
   end
 
   def payments
-    if current_user == User.last
+    if current_user == User.last and !(params[:search].present? or params[:from_date].present?)
       @payments ||= Payment.order(created_at: :desc).page(params[:page])
+    elsif params[:search].present?
+      @payments = Payment.where("email ILIKE (?) OR customer_name ILIKE (?) OR card_number ILIKE (?)", "#{params[:search]}%","#{params[:search]}%","%#{params[:search]}").page(params[:page])
+    elsif params[:from_date].present?
+      @payments = Payment.where("date(created_at) BETWEEN '#{params[:from_date]}' AND '#{params[:end_date]}'").page(params[:page])
     else
       @payments = []
     end

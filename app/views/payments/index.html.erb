@@ -1,13 +1,33 @@
 <% @page_title = "Payments" %>
 <div class="container" style="width: 1290px;">
+<hr />
+
+    <div style="position: relative;">
+			<%= form_tag payments_path, method: 'GET' do %>
+			  <%= text_field_tag :search,'', placeholder: "#{params[:search] ? params[:search] : 'Search'}", style: "width: 290px; padding: 10px; border: 1px solid lightskyblue; border-radius: 5px;" %>
+			  <%= submit_tag "Search", class: 'btn btn-sm btn-primary' %>
+			<% end %>
+		</div>
+
+		<div style="position: relative;top: -50px;float: right;">
+			<%= form_tag payments_path, method: 'GET' do %>
+			  <%= text_field_tag :from_date,'', placeholder: "#{params[:from_date] ? params[:from_date] : 'From Date'}", class: 'datepicker', style: "width: 190px; padding: 10px; border: 1px solid lightskyblue; border-radius: 5px;" %>
+			  -
+			  <%= text_field_tag :end_date,'', placeholder: "#{params[:end_date] ? params[:end_date] : 'End Date'}", class: 'datepicker', style: "width: 190px; padding: 10px; border: 1px solid lightskyblue; border-radius: 5px;" %>
+			  <%= submit_tag "Search", class: 'btn btn-sm btn-primary' %>
+			<% end %>
+		</div>
+
+		<br />
 	<div class="panel panel-info">
 		<!-- panel heading -->
+
 		<div class="panel-heading clearfix">
 			<h4 class="panel-title pull-left" style="padding-top: 7.5px;">
         <strong><%= pluralize Payment.count, "Payment" %></strong>
       </h4>
 
-      <div class="btn-group pull-right">
+      <div class="btn-group pull-right" style="right: -440px;">
         <%= link_to "<i class='glyphicon glyphicon-plus'></i> New Payment".html_safe, new_payment_path,  class: 'btn btn-sm btn-primary pull-right' %>
       </div>
 		</div>
